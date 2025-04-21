@@ -1,5 +1,6 @@
 ﻿namespace DistanceConverter {
     internal class Program {
+        //コマンドライン引数で指定された範囲のフィートとメールの対応表を出力する
         static void Main(string[] args) {
 
             int start = int.Parse(args[1]);
