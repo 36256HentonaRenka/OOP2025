@@ -14,17 +14,16 @@
             
         }
         static void PrintFeetToMeterList(int start,int end) {
-            FeetConverter fc = new FeetConverter();
+            
             for (int feet = start; feet <= end; feet++) {
-                double meter = fc.FromMeter(feet);
+                double meter = FeetConverter.FromMeter(feet);
                 Console.WriteLine($"{feet}ft = {meter:0.0000}m");
 
             }
         }
         static void PrintMeterToFeetList(int start, int end) {
-            FeetConverter fc = new FeetConverter();
             for (int meter = start; meter <= end; meter++) {
-                double feet = fc.ToMeter(meter);
+                double feet = FeetConverter.ToMeter(meter);
                 Console.WriteLine($"{meter}m = {feet:0.0000}ft");
             }
         }
