@@ -11,16 +11,22 @@ namespace Excercise02 {
             Console.WriteLine("2.メートルからインチ");
             int atai = int.Parse(Console.ReadLine());
 
-            Console.Write("はじめ：");
-            int start = int.Parse(Console.ReadLine());
+            if (atai >= 3) {
 
-            Console.Write("おわり：");
-            int end = int.Parse(Console.ReadLine());
+                Console.WriteLine("エラー");
 
-            if (atai == 1) {
+            } else if (atai > 0) {
+                Console.Write("はじめ：");
+                int start = int.Parse(Console.ReadLine());
+
+                Console.Write("おわり：");
+                int end = int.Parse(Console.ReadLine());
+
+                if (atai == 1) {
                     PrintInchToMeter(start, end);
-            } else (atai == 2) {
-                PrintMeterToInch(start, end);
+                } else if (atai == 2) {
+                    PrintMeterToInch(start, end);
+                }
             }
         }
         //インチからメートルへの変換表
