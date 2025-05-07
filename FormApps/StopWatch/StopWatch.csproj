@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D403557F-039B-48D3-A70F-C7DBD9B00D41}</ProjectGuid>
+    <ProjectGuid>{44F15A54-8F72-4207-B2B7-0E497CD750C5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>UnitConverter</RootNamespace>
-    <AssemblyName>UnitConverter</AssemblyName>
+    <RootNamespace>StopWatch</RootNamespace>
+    <AssemblyName>StopWatch</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
