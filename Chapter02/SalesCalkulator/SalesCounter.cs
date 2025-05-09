@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 namespace SalesCalkulator{
     //売り上げ集計クラス
     public class SalesCounter {
-        private readonly List<Sale> _sales;
-
+        private readonly IEnumerable<Sale> _sales;
+        
         public SalesCounter(string filePath) {
             _sales = ReadSales(filePath);
         }
 
         //店舗別売り上げを求める
-        public Dictionary<string, int> GetPerStoreSales() {
-            Dictionary<string, int> dict = new Dictionary<string, int>();
-            foreach (Sale sale in _sales) {
+        public IDictionary<string, int> GetPerStoreSales() {
+            var dict = new SortedDictionary<string, int>();
+            foreach (var sale in _sales) {
                 if (dict.ContainsKey(sale.ShopName))
                     dict[sale.ShopName] += sale.Amout;
                 else
@@ -25,7 +25,7 @@ namespace SalesCalkulator{
             return dict;
         }
         //売り上げデータを読みこみSaleオブジェクトのリストを返す
-        public static List<Sale> ReadSales(string filePath) {
+        public static IEnumerable<Sale> ReadSales(string filePath) {
             //売り上げデータを入れるリストオブジェクトを生成
             List<Sale> sales = new List<Sale>();
             //ファイルを一気に読み込み
