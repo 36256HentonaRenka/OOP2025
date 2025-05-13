@@ -22,5 +22,6 @@ namespace Exercise01 {
             this.Length = Length;
         }
 
+
     }
 }

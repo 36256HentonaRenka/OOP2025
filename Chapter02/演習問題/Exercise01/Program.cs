@@ -1,4 +1,7 @@
-﻿namespace Exercise01 {
+﻿using System.Globalization;
+using System.Reflection;
+
+namespace Exercise01 {
     internal class Program {
         public static void Main(string[] args) {
             //2-1-3
@@ -10,11 +13,16 @@
                 new Song("I Will Always Love You","Whitney Houston",273),
            };
 
-
+            printSongs(songs);
         }
         //2-1-4
-        private static void printSongs(Song[] songs) {
+        private static void printSongs(Song[] songs) { 
+            foreach ( Song song in songs) {
+                int min = song.Length / 60;
+                int sec = song.Length % 60;
+                Console.WriteLine($"{song.Title}, {song.ArtistName} {min}:{sec}");
 
+            }
         }
     }
 }
