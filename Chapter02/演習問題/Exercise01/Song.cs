@@ -21,7 +21,8 @@ namespace Exercise01 {
             this.ArtistName = ArtistName;
             this.Length = Length;
         }
+        public Song() {
 
-
+        }
     }
 }
