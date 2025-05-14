@@ -2,7 +2,9 @@
     internal class Program {
         static void Main(string[] args) {
 
-            int count = Count(5);
+            Console.WriteLine("カウントしたい数値:");
+            int num = int.Parse(Console.ReadLine());
+            Console.WriteLine(Count(num));
         }
 
         static int Count(int num) {
