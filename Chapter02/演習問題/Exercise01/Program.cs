@@ -42,7 +42,7 @@ namespace Exercise01 {
                 
         }
         //2-1-4
-        private static void printSongs(List<Song> songs) {
+        private static void printSongs(IEnumerable<Song> songs) {
 #if false
             foreach ( var song in songs) {
                 int min = song.Length / 60;
