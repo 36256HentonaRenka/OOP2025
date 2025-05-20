@@ -57,7 +57,12 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_4(List<string> names) {
-            
+            var mojicount = names
+                .Where(s => s[0] == 'B')
+                .Select(s => s.Count());
+            foreach(var moji in mojicount) {
+                Console.WriteLine(moji);
+            }
         }
     }
 }
