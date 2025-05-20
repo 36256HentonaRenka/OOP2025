@@ -48,6 +48,11 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> names) {
+            var placeList = names.Where(s => s.Contains('o'));
+            foreach (var text in placeList) {
+                Console.WriteLine(text);
+            }
+            
             
         }
 
