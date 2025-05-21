@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Data;
 
 namespace Exercise02 {
     internal class Program {
@@ -48,7 +49,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise2_3(List<string> names) {
-            var placeList = names.Where(s => s.Contains('o'));
+            var placeList = names.Where(s => s.Contains('o')).ToArray();
             foreach (var text in placeList) {
                 Console.WriteLine(text);
             }
@@ -59,9 +60,9 @@ namespace Exercise02 {
         private static void Exercise2_4(List<string> names) {
             var mojicount = names
                 .Where(s => s[0] == 'B')
-                .Select(s => s.Count());
-            foreach(var moji in mojicount) {
-                Console.WriteLine(moji);
+                .Select(s => new {s,s.Length}).ToArray();
+            foreach(var data in mojicount) {
+                Console.WriteLine(data.s + ":" + data.Length+"文字");
             }
         }
     }
