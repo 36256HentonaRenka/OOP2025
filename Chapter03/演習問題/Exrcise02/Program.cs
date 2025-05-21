@@ -23,7 +23,7 @@ namespace Exrcise01 {
         }
 
         private static void Exercise1(List<int> numbers) {
-            var exit = numbers.Exists(s => s% 8 == 0 && s % 9 == 0);
+            var exit = numbers.Exists(s => s% 8 == 0 || s % 9 == 0);
 
             if (exit) {
                 Console.WriteLine("存在する");
@@ -37,17 +37,20 @@ namespace Exrcise01 {
         }
 
         private static void Exercise3(List<int> numbers) {
-            var text = numbers.Where(s=> 50 <= s);
+            /*var text = numbers.Where(n=> 50 <= n);
             foreach (var s in text) {
                 Console.WriteLine(s);
-            }
+            }*/
+            numbers.Where(n => 50 <= n).ToList().ForEach(n => Console.WriteLine(n));//上の文を一行にしたもの
+            //ForEachを使うためにはListにしないといけないのでToList＜＞をつかう
         }
 
         private static void Exercise4(List<int> numbers) {
-            var text = numbers.Select(s => s * 2).ToList() ;
-            foreach(var s in text) {
-                 Console.WriteLine(s);
-            }
+            /*var text = numbers.Select(n => n * 2).ToList() ;
+            foreach(var n in text) {
+                 Console.WriteLine(n);
+            }*/
+            numbers.Select(n => n * 2).ToList().ForEach(Console.WriteLine);//上の文を一行にしたもの
         }
     }
 }
