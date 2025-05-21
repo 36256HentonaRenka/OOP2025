@@ -33,7 +33,10 @@ namespace Exrcise01 {
         }
 
         private static void Exercise2(List<int> numbers) {
-            
+            var sal = numbers.Select(s => s / 2.0);
+            foreach (var s in sal) {
+                Console.WriteLine(s);
+            }
         }
 
         private static void Exercise3(List<int> numbers) {
@@ -46,7 +49,7 @@ namespace Exrcise01 {
         private static void Exercise4(List<int> numbers) {
             var text = numbers.Select(s => s * 2);
             foreach(var s in text) {
-
+                 Console.WriteLine(numbers);
             }
         }
     }
