@@ -47,8 +47,14 @@ namespace Exercise01 {
         }
 
         private static void Exercise3(List<string> langs) {
-            
-
+            /*var find = langs.Find(s => s.Length == 10);
+            if (find is null) {
+                Console.WriteLine("unknown");
+            } else {
+                    Console.WriteLine(find);
+            }*/
+            var find = langs.Find(s => s.Length == 10);
+            Console.WriteLine(find ?? "unkown");
         }
     }
 }
