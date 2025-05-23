@@ -38,16 +38,17 @@ namespace Exercise01 {
                 i++;
             }
         }
-            
-
-
 
         private static void Exercise2(List<string> langs) {
-            
+            var where = langs.Where(s => s.Contains('S')).ToArray();
+            foreach(var s in where) {
+                Console.WriteLine(s);
+            }
         }
 
         private static void Exercise3(List<string> langs) {
             
+
         }
     }
 }
