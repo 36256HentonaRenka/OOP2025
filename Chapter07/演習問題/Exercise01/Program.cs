@@ -27,7 +27,10 @@ namespace Exercise01 {
         }
 
         private static void Exercise2(int[] numbers) {
-            //var num = numbers.TakeWhile(s=> s.);
+            foreach (var n in numbers.Skip(Math.Max(0,numbers.Length - 2))) {
+                Console.WriteLine(n);
+            }
+               
         }
 
         private static void Exercise3(int[] numbers) {
