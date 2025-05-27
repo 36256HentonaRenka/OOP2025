@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
@@ -25,19 +27,26 @@ namespace Exercise01 {
         }
 
         private static void Exercise2(int[] numbers) {
-            
+            //var num = numbers.TakeWhile(s=> s.);
         }
 
         private static void Exercise3(int[] numbers) {
-            
+            var select = numbers.Select(s => s.ToString("000")).ToArray();
+            foreach(var s in select) {
+                Console.WriteLine(s);
+            }
         }
 
         private static void Exercise4(int[] numbers) {
-            
+            var min = numbers.OrderBy(s => s).Take(3);
+            foreach (var s in min) {
+                Console.WriteLine(s);
+            }
         }
 
         private static void Exercise5(int[] numbers) {
-            
+            var num = numbers.Distinct().ToList();
+            Console.WriteLine( num.Count(s => 10 < s));
         }
     }
 }
