@@ -50,7 +50,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(List<Book> books) {
-           
+            var num = books.Where(z => 4000 < z.Price).First();
+            Console.WriteLine(num.Title);
         }
 
         private static void Exercise5(List<Book> books) {
