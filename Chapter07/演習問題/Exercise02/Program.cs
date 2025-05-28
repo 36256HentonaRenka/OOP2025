@@ -37,8 +37,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise1(List<Book> books) {
-            //var book = books.FirstOrDefault(x=> x.Title == "ワンダフル・C＃ライフ");
-            //Console.WriteLine($"{book.Title} : {book.Price} {book.Pages}ページ");
+            var book = books.Where(x=> x.Title == "ワンダフル・C#ライフ").First();
+            Console.WriteLine($"{book.Title} : {book.Price} {book.Pages}ページ");
         }
 
         private static void Exercise2(List<Book> books) {
@@ -46,7 +46,7 @@ namespace Exercise02 {
         }
 
         private static void Exercise3(List<Book> books) {
-            
+           // Console.WriteLine(books.)
         }
 
         private static void Exercise4(List<Book> books) {
