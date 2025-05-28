@@ -27,7 +27,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise2(int[] numbers) {
-            foreach (var n in numbers.Skip(Math.Max(0,numbers.Length - 2))) {
+            foreach (var n in numbers.TakeLast(2)) {
                 Console.WriteLine(n);
             }
                
@@ -48,8 +48,8 @@ namespace Exercise01 {
         }
 
         private static void Exercise5(int[] numbers) {
-            var num = numbers.Distinct().ToList();
-            Console.WriteLine( num.Count(s => 10 < s));
+            var num = numbers.Distinct().Count(s => 10 < s);
+            Console.WriteLine( num);
         }
     }
 }
