@@ -44,9 +44,8 @@ namespace Exercise03 {
         }
 
         private static void Exercise5(string text) {
-            var num = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            var word = num.Where(s => s.Length <= 4);
-            foreach (var s in word) {
+            var num = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);         
+            foreach (var s in num.Where(s=> s.Length <= 4)) {
                 Console.WriteLine(s);
             }
 
