@@ -1,5 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace Exercise03 {
     internal class Program {
@@ -26,6 +28,8 @@ namespace Exercise03 {
         private static void Exercise1(string text) {
             var taget = text.Count(c=> c == ' ');
             Console.WriteLine("空白行：" + taget);
+
+            //var space = text.Count(char.IsWhiteSpace);
         }
         
         private static void Exercise2(string text) {
@@ -33,9 +37,12 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
-            
-
-
+            var num = text.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
+            var sb = new StringBuilder();
+            foreach(var word in num) {
+                sb.Append(word + " ");
+            }
+            Console.WriteLine(sb.ToString());
         }
 
         private static void Exercise4(string text) {
