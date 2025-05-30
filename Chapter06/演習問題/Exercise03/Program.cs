@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations;
+
 namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
@@ -22,7 +24,7 @@ namespace Exercise03 {
         }
 
         private static void Exercise1(string text) {
-            var taget = text.Count(s=> s == ' ');
+            var taget = text.Count(c=> c == ' ');
             Console.WriteLine("空白行：" + taget);
         }
         
@@ -37,11 +39,17 @@ namespace Exercise03 {
         }
 
         private static void Exercise4(string text) {
-            
+            var num = text.Split(' ',StringSplitOptions.RemoveEmptyEntries);
+            Console.WriteLine("単語数:" + num.Length);
         }
 
         private static void Exercise5(string text) {
-            
+            var num = text.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var word = num.Where(s => s.Length <= 4);
+            foreach (var s in word) {
+                Console.WriteLine(s);
+            }
+
         }
     }
 }
