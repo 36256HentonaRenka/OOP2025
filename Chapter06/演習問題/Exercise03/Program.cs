@@ -37,17 +37,21 @@ namespace Exercise03 {
         }
 
         private static void Exercise3(string text) {
-            var num = text.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToList();
+            var num = text.Split(' ');
             var sb = new StringBuilder();
             foreach(var word in num) {
                 sb.Append(word + " ");
             }
-            Console.WriteLine(sb.ToString());
+
+            Console.WriteLine(sb.ToString().TrimEnd()+";");
         }
 
         private static void Exercise4(string text) {
             var num = text.Split(' ',StringSplitOptions.RemoveEmptyEntries);
             Console.WriteLine("単語数:" + num.Length);
+
+            var count = text.Split(' ').Length;
+            Console.WriteLine("単語数:" + count);
         }
 
         private static void Exercise5(string text) {
@@ -55,6 +59,11 @@ namespace Exercise03 {
             foreach (var s in num.Where(s=> s.Length <= 4)) {
                 Console.WriteLine(s);
             }
+
+            /*var num = text.Split(' ').Where(s => s.Length <= 4);
+            foreach (var s in num) {
+                Console.WriteLine(s);
+            }*/
 
         }
     }
