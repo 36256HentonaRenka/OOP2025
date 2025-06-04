@@ -7,6 +7,9 @@ namespace Exercise03 {
     internal class Program {
         static void Main(string[] args) {
             var text = "Jackdaws love my big sphinx of quartz";
+            var alp = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,z,y";
+            var al = alp.Split(',');
+
 
             Console.WriteLine("6.3.1");
             Exercise1(text);
@@ -23,6 +26,16 @@ namespace Exercise03 {
             Console.WriteLine("6.3.5");
             Exercise5(text);
 
+            Console.WriteLine("6.3.99");
+            Exercise06(text,alp);
+
+        }
+        private static void Exercise06(string text,string alp) {
+            //Console.WriteLine(text.Count(s => s == 'a'));
+            var al = alp.Split(',');
+            foreach (var s in al) {
+                Console.WriteLine(s[0] + ":" + text.Count(a => a == s[0]));
+            }
         }
 
         private static void Exercise1(string text) {
@@ -66,5 +79,6 @@ namespace Exercise03 {
             }*/
 
         }
+        
     }
 }
