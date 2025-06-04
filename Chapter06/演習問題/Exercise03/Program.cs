@@ -31,10 +31,10 @@ namespace Exercise03 {
 
         }
         private static void Exercise06(string text,string alp) {
-            //Console.WriteLine(text.Count(s => s == 'a'));
+            var texts = text.ToLower(); 
             var al = alp.Split(',');
             foreach (var s in al) {
-                Console.WriteLine(s[0] + ":" + text.Count(a => a == s[0]));
+                Console.WriteLine(s[0] + ":" + texts.Count(a => a == s[0]));
             }
         }
 
