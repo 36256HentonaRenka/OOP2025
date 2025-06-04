@@ -31,11 +31,38 @@ namespace Exercise03 {
 
         }
         private static void Exercise06(string text,string alp) {
-            var texts = text.ToLower(); 
-            var al = alp.Split(',');
+            /*var al = alp.Split(',');
             foreach (var s in al) {
-                Console.WriteLine(s[0] + ":" + texts.Count(a => a == s[0]));
+                Console.WriteLine(s[0] + ":" + text.ToLower().
+                                                    Count(a => a == s[0]));
+            }*/
+            var str = text.ToLower().Replace(" "," ");
+
+            //辞書で集計
+            var alphDicCount = Enumerable.Range('a', 26)
+                                         .ToDictionary(num => ((char)num).ToString(), num => 0);
+            foreach(var alph in str) {
+                alphDicCount[alph.ToString()]++;
             }
+            foreach(var item in alphDicCount) {
+                Console.WriteLine($"{item.Key}:{item.Value}");
+            }
+            //*************************************************************
+            //配列で集計
+            var array = Enumerable.Repeat(0, 26).ToArray();
+
+            foreach(var alph in str) {
+                array[alph - 'a']++;
+            }
+            for (char ch = 'a'; ch <= 'z' ; ch++) {
+                Console.WriteLine($"{ch}:{array[ch - 'a']}");
+            }
+            //***************************************************************
+            //aから順にカウントして出力
+            for(char ch = 'a';ch <= 'z'; ch++) {
+                Console.WriteLine($"{ch}:{text.Count(tc => tc ==ch)}");
+            }
+           
         }
 
         private static void Exercise1(string text) {
