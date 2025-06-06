@@ -8,8 +8,8 @@ namespace Exercise01{
     //5.1.1
     public　class YearMonth{
 
-        int Year { get; }
-        int Month{ get; }
+        public int Year { get; set; }
+        public int Month{ get; set; }
 
         public YearMonth(int year,int month) {
             Year = year;
@@ -20,9 +20,13 @@ namespace Exercise01{
         public bool Is21Century => 2001 <= Year && Year <= 2100;
 
         //5.1.3
-        //public YearMonth AddOneMonth() { 
-        
-        //}
+        /*public YearMonth AddOneMonth() {
+            if (Month == 12) {
+               
+            }else {
+
+            }
+        }*/
             
 
         //5.1.4
