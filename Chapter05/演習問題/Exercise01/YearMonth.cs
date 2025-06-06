@@ -20,13 +20,18 @@ namespace Exercise01{
         public bool Is21Century => 2001 <= Year && Year <= 2100;
 
         //5.1.3
-        /*public YearMonth AddOneMonth() {
-            if (Month == 12) {
-               
-            }else {
+        public YearMonth AddOneMonth() {
+            int newYear = Year;
+            int newMonth = Month;
 
+            if (newMonth == 12) {
+                newMonth = 1;
+                newYear++;
+            } else {
+                newMonth++;
             }
-        }*/
+            return new YearMonth(newYear, newMonth);
+        }
             
 
         //5.1.4
