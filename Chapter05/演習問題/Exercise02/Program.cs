@@ -1,4 +1,5 @@
 ﻿using Exercise01;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Exercise02 {
     public class Program {
@@ -15,6 +16,7 @@ namespace Exercise02 {
             Console.WriteLine("5.2.2");
             Exercise2(ymCollection);
 
+
             Console.WriteLine("5.2.4");
             Exercise4(ymCollection);
 
@@ -24,12 +26,20 @@ namespace Exercise02 {
         }
 
         private static void Exercise2(YearMonth[] ymCollection) {
-            for (int i = 0; i < 5; i++) {
-                var ym = ymCollection[i];
-                Console.WriteLine($"{ym.Year}年{ym.Month}月");
+            foreach(var s in ymCollection) {
+                Console.WriteLine($"{s.Year}年{s.Month}月");
             }
-            
-            
+                        
+        }
+
+        //5-2-3
+        private static YearMonth? FindFirst21C(YearMonth[] ymCollection) {
+            foreach(var ym in ymCollection) {
+                if (ym.Is21Century) {
+                    return ym;
+                }
+            }
+            return null;
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
@@ -38,6 +48,7 @@ namespace Exercise02 {
 
         private static void Exercise5(YearMonth[] ymCollection) {
             
+
         }
     }
 }
