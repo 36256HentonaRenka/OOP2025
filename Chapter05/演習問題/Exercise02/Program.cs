@@ -43,11 +43,17 @@ namespace Exercise02 {
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
-            
+            var first = FindFirst21C(ymCollection);
+            if (first == null) {
+                Console.WriteLine("21世紀のデータはありません");
+            }
+            Console.WriteLine(first.Year + "年");
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
-            
+            //var array = ymCollection.Select(ym => ym.Month + 1).ToArray().
+                                    // OrderBy();
+                                     
 
         }
     }
