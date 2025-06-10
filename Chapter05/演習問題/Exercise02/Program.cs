@@ -24,7 +24,8 @@ namespace Exercise02 {
         }
 
         private static void Exercise2(YearMonth[] ymCollection) {
-            
+
+            Console.WriteLine($"{ymCollection[0]}年{ymCollection[1]}月");
         }
 
         private static void Exercise4(YearMonth[] ymCollection) {
