@@ -48,12 +48,13 @@ namespace Exercise02 {
                 Console.WriteLine("21世紀のデータはありません");
             }
             Console.WriteLine(first.Year + "年");
+
+            //Console.WriteLine(FindFirst21C(ymCollection)?.ToString() ?? "21世紀のデータはありません");
         }
 
         private static void Exercise5(YearMonth[] ymCollection) {
-            //var array = ymCollection.Select(ym => ym.Month + 1).ToArray().
-                                    // OrderBy();
-                                     
+            var array = ymCollection.Select(ym => ym.AddOneMonth()).ToArray();
+            Exercise2(array);
 
         }
     }
