@@ -23,6 +23,5 @@
 
         public override string ToString() =>
             $"{Major}.{Minor}.{Build}.{Revision}";
-
     }
 }
