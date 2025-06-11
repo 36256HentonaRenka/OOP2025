@@ -12,7 +12,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1(string text) {
-            var Dict = new Dictionary<char, int>();
+            var Dict = new SortedDictionary<char, int>();
             foreach(var ch in text.ToUpper()) {
                 if ('A' <= ch && ch <= 'Z') { 
                     if (Dict.ContainsKey(ch)) {
@@ -23,7 +23,7 @@ namespace Exercise01 {
 
                 } 
             }
-            foreach(var item in Dict.OrderBy(s=> s.Key)) {
+            foreach(var item in Dict) {
                 Console.WriteLine($"{item.Key} : {item.Value}");
             }
 
