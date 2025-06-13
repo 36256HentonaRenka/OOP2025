@@ -12,7 +12,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1(string text) {
-            var Dict = new SortedDictionary<char, int>();
+            var Dict = new Dictionary<char, int>();
             foreach(var ch in text.ToUpper()) {
                 if ('A' <= ch && ch <= 'Z') { 
                     if (Dict.ContainsKey(ch)) {
@@ -23,14 +23,27 @@ namespace Exercise01 {
 
                 } 
             }
-            foreach(var item in Dict) {
+            foreach(var item in Dict.OrderBy(s=> s.Key)) {
                 Console.WriteLine($"{item.Key} : {item.Value}");
             }
 
         }
 
         private static void Exercise2(string text) {
-            
+            var Dict = new SortedDictionary<char, int>();
+            foreach (var ch in text.ToUpper()) {
+                if ('A' <= ch && ch <= 'Z') {
+                    if (Dict.ContainsKey(ch)) {
+                        Dict[ch]++;
+                    } else {
+                        Dict[ch] = 1;
+                    }
+
+                }
+            }
+            foreach (var item in Dict) {
+                Console.WriteLine($"{item.Key} : {item.Value}");
+            }
         }
     }
 }
