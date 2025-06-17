@@ -67,7 +67,7 @@ namespace Test02 {
 
         //問題２　偶数の最大値を表示（式形式で記述せよ）
         //　　　　出力結果【94】
-        private static void Exercise02(int[] numbers) => Console.WriteLine(numbers.Where(n => n % 2 == 0).Max());
+        private static void Exercise02(int[] numbers) => Console.WriteLine(numbers.Where(n => n % 2 == 0).Max(n=> n));
 
 
         //問題３　昇順に並べて表示（遅延実行とする）
@@ -150,9 +150,9 @@ namespace Test02 {
         //          New Delhi : 9文字
         //          Hong Kong : 9文字】
         private static void Exercise09(List<string> cities) {
-            foreach (var city in cities) {
-                
-                Console.WriteLine($"{city} : {city.Length}文字");
+            var city = cities.OrderBy(s => s.Length);
+            foreach (var s in city) {
+                Console.WriteLine($"{s} : {s.Length}文字");
             }
         }
 
