@@ -2,6 +2,12 @@
     internal class Program {
         static private Dictionary<string, string> prefOfficeDict = new Dictionary<string, string>();
 
+        public enum SelectMenu {
+            Alldisp = 1,
+            Search = 2,
+            Exit = 9
+        }
+
         static void Main(string[] args) {
             String? pref, prefCaptalLocation;
 
@@ -29,46 +35,34 @@
                         //*　ここに入力　*******************//
                         Console.WriteLine("登録済みです。上書きしますか？(Y/N)");
                         var ans = Console.ReadLine();
-
-                    //県庁所在地登録処理
-                    if (ans != "Y") {
-                        Console.Write("都道府県:");
-                        pref = Console.ReadLine();
-                        //県庁所在地の入力
-                        Console.Write("県庁所在地:");
-                        prefCaptalLocation = Console.ReadLine();
+                    　　if (ans == "N") continue;
                     }
-                     
-                        
-                  
 
-                        if (pref == null) break;    //無限ループを抜ける(Ctrl + 'Z')
+                prefOfficeDict[pref] = prefCaptalLocation ?? "*未入力*";
 
-                            
-                       
-                    }
-                
-                    //*　ここに入力　*******************//
+                if (pref == null) break;    //無限ループを抜ける(Ctrl + 'Z')
+
+                //*　ここに入力　*******************//
 
 
-                    Console.WriteLine(" ");//改行
+                Console.WriteLine(" ");//改行
                 }
             
                 Boolean endFlag = false;    //終了フラグ（無限ループを抜け出す用）
                 while (!endFlag) {
                     switch (menuDisp()) {
-                        case "1":                        //一覧出力処理
+                        case SelectMenu.Alldisp:                        //一覧出力処理
                             allDisp();
                             break;
 
 
-                        case "2"://検索処理
+                        case SelectMenu.Search://検索処理
                             searchPrefCaptalLocation();
                             break;
 
 
-                        case "9"://無限ループを抜ける
-
+                        case SelectMenu.Exit://無限ループを抜ける
+                        endFlag = true;
                             break;
                     }
                 }
@@ -76,14 +70,15 @@
         }
 
         //メニュー表示
-        private static string? menuDisp() {
+        private static SelectMenu menuDisp() {
             Console.WriteLine("\n**** メニュー ****");
             Console.WriteLine("1：一覧表示");
             Console.WriteLine("2：検索");
             Console.WriteLine("9：終了");
             Console.Write(">");
-            var menuSelect = Console.ReadLine();
-            return menuSelect;
+            var menuSelect = (SelectMenu)int.Parse( Console.ReadLine());
+            return menuSelect ;
+
         }
 
 
@@ -92,6 +87,10 @@
 
             //*　ここに入力　*******************//
 
+            foreach(var s in prefOfficeDict) {
+                Console.WriteLine($"{s.Key} の県庁所在地は{s.Value}です。");
+            }
+
 
         }
 
@@ -99,6 +98,10 @@
         private static void searchPrefCaptalLocation() {
             Console.Write("都道府県:");
             String? searchPref = Console.ReadLine();
+
+            if (searchPref is not null) return;
+
+            Console.WriteLine($"{searchPref}の県庁所在地は{prefOfficeDict[searchPref]}です。");
         }
     }
 }
