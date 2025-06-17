@@ -10,7 +10,7 @@
 
         //メソッドの概要： 
         private static IEnumerable<Student> ReadScore(string filePath) {
-            var score = new List<Student>();
+            var scores = new List<Student>();
             var lines = File.ReadAllLines(filePath);
             foreach (var line in lines) {
                 string[] items = line.Split(',');
@@ -19,18 +19,22 @@
                     Subject = items[1],
                     Score = int.Parse(items[2])
                 };
-                score.Add(scorecounter);
+                scores.Add(scorecounters);
             }
-            return sales;
-
-
-
+            return scores;
 
         }
 
         //メソッドの概要： 
         public IDictionary<string, int> GetPerStudentScore() {
-            
+            var dict = new Dictionary<string, int>();
+            foreach (var score in _score) {
+                if (dict.ContainsKey(score.Subject))
+                    dict[score.Subject] +=score.Score;
+                else
+                    dict[score.Subject] = score.Score;
+            }
+            return dict;
 
 
 
