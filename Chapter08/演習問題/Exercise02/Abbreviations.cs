@@ -40,5 +40,7 @@ public class Abbreviations {
     public bool Remove(string abb) => _dict.Remove(abb);
 
     //8-2-3
-    
+    public IEnumerable<KeyValuePair<string, string>> GetAll() {
+        return _dict;
+    }
 }
