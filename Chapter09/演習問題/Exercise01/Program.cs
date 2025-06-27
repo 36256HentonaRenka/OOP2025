@@ -33,6 +33,13 @@ namespace Exercise01 {
 
             var str = datetime.ToString("ggy年M月d日(dddd)",culture);
             Console.WriteLine(str);
+
+            var datestr = datetime.ToString("ggyy",culture);
+            var dayofweek = culture.DateTimeFormat.GetDayName(datetime.DayOfWeek);
+
+            var stri = string.Format($"{datestr}年{datetime.Month,2}月{datetime.Day,2}日({dayofweek})");
+            Console.WriteLine(stri);
+
         }
     }
 }
