@@ -22,6 +22,11 @@ namespace CarReportSystem {
         }
 
         private void btRecordAdd_Click(object sender, EventArgs e) {
+            if ((string.IsNullOrWhiteSpace(cbAuthor.Text)) || (string.IsNullOrWhiteSpace(cbCarName.Text))) {
+                tsslbMessage.Text = "記入者名、または車の名前が未入力です";
+                return;
+            }
+
             var carReport = new CarReport {
                 Date = dtpDate.Value,
                 Author = cbAuthor.Text,
@@ -32,10 +37,13 @@ namespace CarReportSystem {
 
             };
             listCarReports.Add(carReport);
-            InputItemsAllClear();
+            setCbAuthor(cbAuthor.Text); //コンボボックスへ登録
+            setCbCarName(cbCarName.Text);
+            InputItemsAllClear();//登録後クリア
+
         }
 
-
+        //入力項目をすべてクリア
         private void InputItemsAllClear() {
             dtpDate.Value = DateTime.Today;
             cbAuthor.Text = string.Empty;
@@ -71,11 +79,12 @@ namespace CarReportSystem {
         }
 
         private void dgvRecord_Click(object sender, EventArgs e) {
+            if (dgvRecord.CurrentRow is null) return;
 
             dtpDate.Value = (DateTime)dgvRecord.CurrentRow.Cells["Date"].Value;
             setRadioButtonMaker((MakerGroup)dgvRecord.CurrentRow.Cells["Maker"].Value);
             cbAuthor.Text = (string)dgvRecord.CurrentRow.Cells["Author"].Value;
-            cbCarName.Text = (string)dgvRecord.CurrentRow.Cells["Maker"].Value;
+            cbCarName.Text = (string)dgvRecord.CurrentRow.Cells["CarName"].Value;
             tbReport.Text = (string)dgvRecord.CurrentRow.Cells["Report"].Value;
             pbPicture.Image = (Image)dgvRecord.CurrentRow.Cells["Picture"].Value;
         }
@@ -103,17 +112,36 @@ namespace CarReportSystem {
         //新規追加のイベントハンドラ
         private void btNewRecord_Click(object sender, EventArgs e) {
             InputItemsAllClear();
-            
 
         }
         //修正ボタンのイベントハンドラ
         private void btRecordModify_Click(object sender, EventArgs e) {
+            if (dgvRecord.Rows.Count == 0) return;
 
+            int index = dgvRecord.CurrentRow.Index;
+            listCarReports[index].Author = cbAuthor.Text;
+            listCarReports[index].Date = dtpDate.Value;
+            listCarReports[index].CarName = cbCarName.Text;
+            listCarReports[index].Report = tbReport.Text;
+            listCarReports[index].Picture = pbPicture.Image;
+            listCarReports[index].Maker =GetRadioButtonMaker();
 
+            dgvRecord.Refresh();
         }
         //削除のイベントハンドラ
         private void btRecordDelete_Click(object sender, EventArgs e) {
+            //選択されていない場合は処理を行わない
+            if ((dgvRecord.CurrentRow is null)
+               || (!dgvRecord.CurrentRow.Selected)) return;
+
             //カーレポート管理用リストから、該当データを削除する
+            int index = dgvRecord.CurrentRow.Index;     
+            listCarReports.RemoveAt(index);
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+
+            InputItemsAllClear();
 
         }
     }

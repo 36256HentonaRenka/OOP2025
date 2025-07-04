@@ -51,9 +51,12 @@
             btRecordModify = new Button();
             ofdPickFileOpen = new OpenFileDialog();
             btNewRecord = new Button();
+            ssMessageArea = new StatusStrip();
+            tsslbMessage = new ToolStripStatusLabel();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecord).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).BeginInit();
+            ssMessageArea.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -347,11 +350,26 @@
             btNewRecord.UseVisualStyleBackColor = true;
             btNewRecord.Click += btNewRecord_Click;
             // 
+            // ssMessageArea
+            // 
+            ssMessageArea.Items.AddRange(new ToolStripItem[] { tsslbMessage });
+            ssMessageArea.Location = new Point(0, 694);
+            ssMessageArea.Name = "ssMessageArea";
+            ssMessageArea.Size = new Size(831, 22);
+            ssMessageArea.TabIndex = 10;
+            ssMessageArea.Text = "statusStrip1";
+            // 
+            // tsslbMessage
+            // 
+            tsslbMessage.Name = "tsslbMessage";
+            tsslbMessage.Size = new Size(0, 17);
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(831, 699);
+            ClientSize = new Size(831, 716);
+            Controls.Add(ssMessageArea);
             Controls.Add(btNewRecord);
             Controls.Add(btPicDelete);
             Controls.Add(btRecordModify);
@@ -375,10 +393,13 @@
             Controls.Add(label1);
             Name = "Form1";
             Text = "試験レポート管理システム";
+            Load += Form1_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRecord).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbPicture).EndInit();
+            ssMessageArea.ResumeLayout(false);
+            ssMessageArea.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -413,5 +434,7 @@
         private Button btRecordModify;
         private OpenFileDialog ofdPickFileOpen;
         private Button btNewRecord;
+        private StatusStrip ssMessageArea;
+        private ToolStripStatusLabel tsslbMessage;
     }
 }
