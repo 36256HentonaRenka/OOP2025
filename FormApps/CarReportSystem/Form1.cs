@@ -10,7 +10,7 @@ namespace CarReportSystem {
         BindingList<CarReport> listCarReports = new BindingList<CarReport>();
 
         //設定クラスのインスタンスを生成
-        Settings settings = new Settings();
+        Settings settings = Settings.getInstance();
 
         public Form1() {
             InitializeComponent();
@@ -157,7 +157,7 @@ namespace CarReportSystem {
             dgvRecord.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
 
             //設定ファイルを読み込み背景色を設定する（逆シリアル化）
-            //P284以降を参考にする(ファイル名：setting.xml)
+            //P286以降を参考にする(ファイル名：setting.xml)
             if (File.Exists("setting.xml")) {
                 try {
                     using (var reader = XmlReader.Create("setting.xml")) {
