@@ -69,12 +69,12 @@ namespace Exercise01 {
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.All),
                 WriteIndented = true
             };
-            string jsonString = JsonSerializer.Serialize(employees, options);
-            File.WriteAllText(filePath,jsonString);
+            byte[] utf8Bytes = JsonSerializer.SerializeToUtf8Bytes(employees, options);
+            File.WriteAllBytes(filePath,utf8Bytes);
         }
 
         //問題12.1.3
-        //シリアル化してファイルへ出力する
+        //逆シリアル化してファイルへ出力する
         static Employee[] Deserialize_f(string filePath) {
             var options = new JsonSerializerOptions {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
