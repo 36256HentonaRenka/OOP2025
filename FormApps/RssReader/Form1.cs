@@ -37,15 +37,19 @@ namespace RssReader {
             int index = lbTitles.SelectedIndex;
             wvRssLink.Source = new Uri(items[index].Link);
         }
-
+        //リンクを前に戻す
         private void btReturn_Click(object sender, EventArgs e) {
             int index = lbTitles.SelectedIndex;
-            wvRssLink.Source = new Uri(items[index + 1].Link);
+            index--;
+            lbTitles.SelectedIndex = index;
+            wvRssLink.Source = new Uri(items[index].Link);
         }
-
+        //リンクを１つ進める
         private void btNext_Click(object sender, EventArgs e) {
             int index = lbTitles.SelectedIndex;
-            wvRssLink.Source = new Uri(items[index + 1].Link);
+            index++;
+            lbTitles.SelectedIndex = index;
+            wvRssLink.Source = new Uri(items[index].Link);
         }
     }
 }
