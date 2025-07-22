@@ -14,7 +14,7 @@ namespace RssReader {
 
         private async void btRssGet_Click(object sender, EventArgs e) {
             using (var hc = new HttpClient()) {
-                string xml = await hc.GetStringAsync(tbUrl.Text);
+                string xml = await hc.GetStringAsync(cbRss.Text);
                 XDocument xdoc = XDocument.Parse(xml);
 
                 //RSSを解析して必要な要素を取得
@@ -28,8 +28,8 @@ namespace RssReader {
                 //リストボックスへタイトルを表示
                 lbTitles.Items.Clear();
                 items.ForEach(item => lbTitles.Items.Add(item.Title ?? "データなし"));
-
             }
+
         }
 
         //タイトルを選択（クリック）したときに呼ばれるイベントハンドラ
@@ -38,18 +38,31 @@ namespace RssReader {
             wvRssLink.Source = new Uri(items[index].Link);
         }
         //リンクを前に戻す
-        private void btReturn_Click(object sender, EventArgs e) {
-            int index = lbTitles.SelectedIndex;
-            index--;
-            lbTitles.SelectedIndex = index;
-            wvRssLink.Source = new Uri(items[index].Link);
+        private void btGoBack(object sender, EventArgs e) {
+            if (wvRssLink.CanGoBack) {
+                wvRssLink.GoBack();
+            }
         }
         //リンクを１つ進める
-        private void btNext_Click(object sender, EventArgs e) {
-            int index = lbTitles.SelectedIndex;
-            index++;
-            lbTitles.SelectedIndex = index;
-            wvRssLink.Source = new Uri(items[index].Link);
+        private void btGoFoward(object sender, EventArgs e) {
+            if (wvRssLink.CanGoForward) {
+                wvRssLink.GoForward();
+            }
+        }
+
+        private void wvRssLink_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e) {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            cbRss.Items.Add("https://news.yahoo.co.jp/rss/media/nrakuten/all.xml");
+        }
+        private void GoFowardBtEnableSet() {
+            //btGoBack.Enabled = wvRssLink.CanGoBack;
+        }
+
+        private void cbRss_SelectedIndexChanged(object sender, EventArgs e) {
+            
         }
     }
 }

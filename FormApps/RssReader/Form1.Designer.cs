@@ -24,11 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             btRssGet = new Button();
-            tbUrl = new TextBox();
             lbTitles = new ListBox();
             wvRssLink = new Microsoft.Web.WebView2.WinForms.WebView2();
             btReturn = new Button();
             btNext = new Button();
+            cbRss = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)wvRssLink).BeginInit();
             SuspendLayout();
             // 
@@ -43,14 +43,6 @@
             btRssGet.UseVisualStyleBackColor = true;
             btRssGet.Click += btRssGet_Click;
             // 
-            // tbUrl
-            // 
-            tbUrl.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            tbUrl.Location = new Point(206, 8);
-            tbUrl.Name = "tbUrl";
-            tbUrl.Size = new Size(546, 33);
-            tbUrl.TabIndex = 1;
-            // 
             // lbTitles
             // 
             lbTitles.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
@@ -62,16 +54,17 @@
             lbTitles.TabIndex = 2;
             lbTitles.Click += lbTitles_Click;
             // 
-            // webView21
+            // wvRssLink
             // 
             wvRssLink.AllowExternalDrop = true;
             wvRssLink.CreationProperties = null;
             wvRssLink.DefaultBackgroundColor = Color.White;
             wvRssLink.Location = new Point(12, 327);
-            wvRssLink.Name = "webView21";
+            wvRssLink.Name = "wvRssLink";
             wvRssLink.Size = new Size(882, 325);
             wvRssLink.TabIndex = 3;
             wvRssLink.ZoomFactor = 1D;
+            wvRssLink.NavigationCompleted += wvRssLink_NavigationCompleted;
             // 
             // btReturn
             // 
@@ -82,7 +75,7 @@
             btReturn.TabIndex = 4;
             btReturn.Text = "戻る";
             btReturn.UseVisualStyleBackColor = true;
-            btReturn.Click += btReturn_Click;
+            btReturn.Click += btGoBack;
             // 
             // btNext
             // 
@@ -93,33 +86,43 @@
             btNext.TabIndex = 5;
             btNext.Text = "進む";
             btNext.UseVisualStyleBackColor = true;
-            btNext.Click += btNext_Click;
+            btNext.Click += btGoFoward;
+            // 
+            // cbRss
+            // 
+            cbRss.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            cbRss.FormattingEnabled = true;
+            cbRss.Location = new Point(206, 7);
+            cbRss.Name = "cbRss";
+            cbRss.Size = new Size(546, 33);
+            cbRss.TabIndex = 6;
+            cbRss.SelectedIndexChanged += cbRss_SelectedIndexChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(910, 655);
+            Controls.Add(cbRss);
             Controls.Add(btNext);
             Controls.Add(btReturn);
             Controls.Add(wvRssLink);
             Controls.Add(lbTitles);
-            Controls.Add(tbUrl);
             Controls.Add(btRssGet);
             Name = "Form1";
             Text = "Rssリーダー";
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)wvRssLink).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button btRssGet;
-        private TextBox tbUrl;
         private ListBox lbTitles;
         private Microsoft.Web.WebView2.WinForms.WebView2 wvRssLink;
         private Button btReturn;
         private Button btNext;
+        private ComboBox cbRss;
     }
 }

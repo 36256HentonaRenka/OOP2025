@@ -167,7 +167,7 @@ namespace CarReportSystem {
                         BackColor = Color.FromArgb(set?.MainFormBackColor ?? 0);
                         //設定クラスのインスタンスにも現在の設定色を設定
                         settings.MainFormBackColor = BackColor.ToArgb();
-                        
+
                     }
                 }
                 catch (Exception ex) {
@@ -179,7 +179,7 @@ namespace CarReportSystem {
                 tsslbMessage.Text = "設定ファイルがありません";
             }
 
-            
+
         }
 
         private void tsmiExit_Click(object sender, EventArgs e) {
@@ -274,8 +274,12 @@ namespace CarReportSystem {
             catch (Exception ex) {
                 tsslbMessage.Text = "設定ファイル書き出しエラー";
                 MessageBox.Show(ex.Message);
-                
+
             }
+        }
+
+        private void cbAuthor_SelectedIndexChanged(object sender, EventArgs e) {
+
         }
     }
 }
