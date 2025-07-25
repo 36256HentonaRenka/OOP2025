@@ -26,9 +26,11 @@
             btRssGet = new Button();
             lbTitles = new ListBox();
             wvRssLink = new Microsoft.Web.WebView2.WinForms.WebView2();
-            btReturn = new Button();
-            btNext = new Button();
+            btGoBack = new Button();
+            btGoFoward = new Button();
             cbRss = new ComboBox();
+            btFavorite = new Button();
+            tbFavorite = new TextBox();
             ((System.ComponentModel.ISupportInitialize)wvRssLink).BeginInit();
             SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             lbTitles.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lbTitles.FormattingEnabled = true;
             lbTitles.ItemHeight = 15;
-            lbTitles.Location = new Point(12, 47);
+            lbTitles.Location = new Point(12, 107);
             lbTitles.Name = "lbTitles";
             lbTitles.Size = new Size(882, 274);
             lbTitles.TabIndex = 2;
@@ -59,34 +61,35 @@
             wvRssLink.AllowExternalDrop = true;
             wvRssLink.CreationProperties = null;
             wvRssLink.DefaultBackgroundColor = Color.White;
-            wvRssLink.Location = new Point(12, 327);
+            wvRssLink.Location = new Point(12, 387);
             wvRssLink.Name = "wvRssLink";
-            wvRssLink.Size = new Size(882, 325);
+            wvRssLink.Size = new Size(882, 265);
             wvRssLink.TabIndex = 3;
             wvRssLink.ZoomFactor = 1D;
             wvRssLink.NavigationCompleted += wvRssLink_NavigationCompleted;
+            wvRssLink.SourceChanged += wvRssLink_SourceChanged;
             // 
-            // btReturn
+            // btGoBack
             // 
-            btReturn.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btReturn.Location = new Point(21, 8);
-            btReturn.Name = "btReturn";
-            btReturn.Size = new Size(75, 33);
-            btReturn.TabIndex = 4;
-            btReturn.Text = "戻る";
-            btReturn.UseVisualStyleBackColor = true;
-            btReturn.Click += btGoBack;
+            btGoBack.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btGoBack.Location = new Point(12, 8);
+            btGoBack.Name = "btGoBack";
+            btGoBack.Size = new Size(75, 33);
+            btGoBack.TabIndex = 4;
+            btGoBack.Text = "戻る";
+            btGoBack.UseVisualStyleBackColor = true;
+            btGoBack.Click += btGoBack_Click;
             // 
-            // btNext
+            // btGoFoward
             // 
-            btNext.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            btNext.Location = new Point(102, 7);
-            btNext.Name = "btNext";
-            btNext.Size = new Size(98, 33);
-            btNext.TabIndex = 5;
-            btNext.Text = "進む";
-            btNext.UseVisualStyleBackColor = true;
-            btNext.Click += btGoFoward;
+            btGoFoward.Font = new Font("Yu Gothic UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btGoFoward.Location = new Point(93, 7);
+            btGoFoward.Name = "btGoFoward";
+            btGoFoward.Size = new Size(98, 33);
+            btGoFoward.TabIndex = 5;
+            btGoFoward.Text = "進む";
+            btGoFoward.UseVisualStyleBackColor = true;
+            btGoFoward.Click += this.btGoFoward_Click;
             // 
             // cbRss
             // 
@@ -98,14 +101,35 @@
             cbRss.TabIndex = 6;
             cbRss.SelectedIndexChanged += cbRss_SelectedIndexChanged;
             // 
+            // btFavorite
+            // 
+            btFavorite.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            btFavorite.Location = new Point(424, 48);
+            btFavorite.Name = "btFavorite";
+            btFavorite.Size = new Size(121, 34);
+            btFavorite.TabIndex = 7;
+            btFavorite.Text = "お気に入り登録";
+            btFavorite.UseVisualStyleBackColor = true;
+            btFavorite.Click += btFavorite_Click;
+            // 
+            // tbFavorite
+            // 
+            tbFavorite.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            tbFavorite.Location = new Point(12, 54);
+            tbFavorite.Name = "tbFavorite";
+            tbFavorite.Size = new Size(406, 25);
+            tbFavorite.TabIndex = 8;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(910, 655);
+            Controls.Add(tbFavorite);
+            Controls.Add(btFavorite);
             Controls.Add(cbRss);
-            Controls.Add(btNext);
-            Controls.Add(btReturn);
+            Controls.Add(btGoFoward);
+            Controls.Add(btGoBack);
             Controls.Add(wvRssLink);
             Controls.Add(lbTitles);
             Controls.Add(btRssGet);
@@ -114,6 +138,7 @@
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)wvRssLink).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -121,8 +146,10 @@
         private Button btRssGet;
         private ListBox lbTitles;
         private Microsoft.Web.WebView2.WinForms.WebView2 wvRssLink;
-        private Button btReturn;
-        private Button btNext;
+        private Button btGoBack;
+        private Button btGoFoward;
         private ComboBox cbRss;
+        private Button btFavorite;
+        private TextBox tbFavorite;
     }
 }

@@ -279,6 +279,7 @@
             dgvRecord.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRecord.Size = new Size(688, 163);
             dgvRecord.TabIndex = 6;
+            dgvRecord.CellContentClick += dgvRecord_CellContentClick;
             dgvRecord.Click += dgvRecord_Click;
             // 
             // pbPicture
