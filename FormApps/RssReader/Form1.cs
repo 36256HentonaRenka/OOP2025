@@ -76,7 +76,7 @@ namespace RssReader {
                 return;
             }
             if (!topic.ContainsKey(tbfav)) {
-                topic.Add(tbfav,cbrss);
+                topic.Add(tbfav, cbrss);
 
                 var bind = new BindingList<string>(topic.Keys.ToList());
                 cbRss.DataSource = bind;
@@ -100,6 +100,21 @@ namespace RssReader {
         //リンクを進める
         private void btGoFoward_Click(object sender, EventArgs e) {
             wvRssLink.GoForward();
+        }
+
+        //登録したRSSを削除する機能
+        private void btDelete_Click(object sender, EventArgs e) {
+            var deletekey = cbRss.Text;
+            if (!string.IsNullOrEmpty(deletekey) && topic.Keys.Contains(deletekey)) {
+                topic.Remove(deletekey);
+                var bind = new BindingList<string>(topic.Keys.ToList());
+                cbRss.DataSource = bind;
+
+                MessageBox.Show(deletekey + "は削除されました。");
+            } else {
+                MessageBox.Show(deletekey + "は登録されていません。");
+            }
+
         }
     }
 }
