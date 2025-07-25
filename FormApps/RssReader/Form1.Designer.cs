@@ -66,7 +66,6 @@
             wvRssLink.Size = new Size(882, 265);
             wvRssLink.TabIndex = 3;
             wvRssLink.ZoomFactor = 1D;
-            wvRssLink.NavigationCompleted += wvRssLink_NavigationCompleted;
             wvRssLink.SourceChanged += wvRssLink_SourceChanged;
             // 
             // btGoBack
@@ -99,7 +98,6 @@
             cbRss.Name = "cbRss";
             cbRss.Size = new Size(546, 33);
             cbRss.TabIndex = 6;
-            cbRss.SelectedIndexChanged += cbRss_SelectedIndexChanged;
             // 
             // btFavorite
             // 

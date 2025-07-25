@@ -1,4 +1,6 @@
 using Microsoft.Web.WebView2.WinForms;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -65,39 +67,25 @@ namespace RssReader {
             wvRssLink.Source = new Uri(items[index].Link);
         }
 
-
-        //リンクを１つ進める
-        //private void btGoFoward(object sender, EventArgs e) {
-        //    if (wvRssLink.CanGoForward) {
-        //        wvRssLink.GoForward();
-        //    }
-        //}
-
-        private void wvRssLink_NavigationCompleted(object sender, Microsoft.Web.WebView2.Core.CoreWebView2NavigationCompletedEventArgs e) {
-
-        }
-
-        private void GoFowardBtEnableSet() {
-
-        }
-
-        private void cbRss_SelectedIndexChanged(object sender, EventArgs e) {
-
-        }
-
         private void btFavorite_Click(object sender, EventArgs e) {
-            string index = cbRss.Text;
-            if (index is null) {
-                MessageBox.Show("選択をしてください");
+            var cbrss = cbRss.Text;
+            var tbfav = tbFavorite.Text;
+
+            if (string.IsNullOrEmpty(cbrss)) {
+                MessageBox.Show("URLを選択してください");
                 return;
             }
-            //tbFavorite.Text = items[index].Title;
-            //wvRssLink.Source = new Uri(items[index].Link);
-            //cbRss.Items.Add(items[index].Link);
-            Dictionary<string, string> fav = new Dictionary<string, string> {
-                { tbFavorite.Text,index }
-            };
-            cbRss.DataSource = fav.Select(s => s.Key);
+            if (!topic.ContainsKey(tbfav)) {
+                topic.Add(tbfav,cbrss);
+
+                var bind = new BindingList<string>(topic.Keys.ToList());
+                cbRss.DataSource = bind;
+                tbFavorite.Clear();
+
+            } else {
+                MessageBox.Show("すでに同じ名前があります");
+                return;
+            }
         }
 
         private void wvRssLink_SourceChanged(object sender, Microsoft.Web.WebView2.Core.CoreWebView2SourceChangedEventArgs e) {
@@ -109,7 +97,7 @@ namespace RssReader {
         private void btGoBack_Click(object sender, EventArgs e) {
             wvRssLink.GoBack();
         }
-
+        //リンクを進める
         private void btGoFoward_Click(object sender, EventArgs e) {
             wvRssLink.GoForward();
         }
