@@ -16,13 +16,13 @@ namespace Section03 {
 
             var texts = "private List<string> results = new List<string>();";
 
-            var matches2 = Regex.Matches(texts, @"\b[a-z]+\b")
+            /*var matches2 = Regex.Matches(texts, @"\b[a-z]+\b")
                 .Cast<Match>().Where(x=> x)
-                .OrderBy(x => x.Length);
+                .OrderBy(x => x.Length);*/
 
-            foreach (Match match3 in matches2) {
+            /*foreach (Match match3 in matches2) {
                 Console.WriteLine($"Index={match3.Index},Length={match3.Length},Value={match3.Value}");
-            }
+            }*/
         }
     }
 }
