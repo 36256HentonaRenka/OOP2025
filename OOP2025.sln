@@ -171,6 +171,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleSlider", "WPF\SampleS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorChecker", "WPF\ColorChecker\ColorChecker.csproj", "{967FEAAE-477D-4BF3-82EC-79B1EC3C2927}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConverterApp", "WPF\ConverterApp\ConverterApp.csproj", "{5B6A962A-A90E-45E7-897A-649D5B019C29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -397,6 +399,10 @@ Global
 		{967FEAAE-477D-4BF3-82EC-79B1EC3C2927}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{967FEAAE-477D-4BF3-82EC-79B1EC3C2927}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{967FEAAE-477D-4BF3-82EC-79B1EC3C2927}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6A962A-A90E-45E7-897A-649D5B019C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6A962A-A90E-45E7-897A-649D5B019C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6A962A-A90E-45E7-897A-649D5B019C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6A962A-A90E-45E7-897A-649D5B019C29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -469,6 +475,7 @@ Global
 		{5D2CAA6B-51CD-468F-BC59-48134279CB2B} = {432952D8-1076-4758-805A-5A2DB79BB399}
 		{4E3B92EF-F9A0-4F41-A8C2-21F66A29EC88} = {432952D8-1076-4758-805A-5A2DB79BB399}
 		{967FEAAE-477D-4BF3-82EC-79B1EC3C2927} = {432952D8-1076-4758-805A-5A2DB79BB399}
+		{5B6A962A-A90E-45E7-897A-649D5B019C29} = {432952D8-1076-4758-805A-5A2DB79BB399}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E7C25D3-AAFF-407A-8807-F9D5E67F9161}
