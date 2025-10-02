@@ -13,16 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ConverterApp
-{
+namespace ConverterApp{
     /// <summary>
     /// MainWindow.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class MainWindow : Window{
+        public MainWindow(){
             InitializeComponent();
+        }
+
+        private void MetricUnit_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var selectedItem = MetricUnit.SelectedItem as System.Windows.Controls.ComboBoxItem;
+        }
+
+        private void ImperialUnit_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var selectedItem = MetricUnit.SelectedItem as System.Windows.Controls.ComboBoxItem;
         }
     }
 }
