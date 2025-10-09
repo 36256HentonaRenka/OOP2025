@@ -9,19 +9,19 @@ namespace PrismObservesSample{
         private string _input1 = "";
         public string Input1 {
             get => _input1;
-            set => SetProperty(ref _input1,value);
+            set => SetProperty(ref _input1,value);　//処理の追加
         }
 
         private string _input2 = "";
         public string Input2 {
             get => _input2;
-            set => SetProperty(ref _input2,value);
+            set => SetProperty(ref _input2,value);　//処理の追加
         }
 
         private string _result = "";
         public string Result {
             get => _result;
-            set => SetProperty(ref _result, value);
+            set => SetProperty(ref _result, value);　//処理の追加　
         }
 
         //コンストラクタ
