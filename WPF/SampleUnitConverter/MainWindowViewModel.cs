@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace SampleUnitConverter{
-    internal class MainWindowViewModel : ViewModel{
+    internal class MainWindowViewModel : BindableBase {
 
         //フィールド
         private double metricValue;
@@ -27,23 +27,16 @@ namespace SampleUnitConverter{
         //プロパティ
         public double MetricValue {
             get => metricValue;
-            set {
-                this.metricValue = value;
-                this.OnPropertyChanged();
-
-            }
+            set => SetProperty(ref metricValue, value);
         }
 
         public double ImprialValue {
             get => imperialValue;
-            set {
-                this.imperialValue = value;
-                this.OnPropertyChanged();
-            }
+            set => SetProperty(ref imperialValue, value);
         }
 
         public MainWindowViewModel() {
-            CurrentMetricUnit = MetricUnit.Units.First();
+            /*CurrentMetricUnit = MetricUnit.Units.First();
             CurrnetImperialUnit = ImperialUnit.Units.First();
 
             ImperialUnitToMetric = new DelegateCommand(
@@ -52,11 +45,31 @@ namespace SampleUnitConverter{
 
             MetoricToImperialunit = new DelegateCommand(
                 () => ImprialValue =
+                   CurrnetImperialUnit.FromMetricUnit(CurrentMetricUnit, MetricValue));*/
+
+            ChangeCommand = new DelegateCommand(Changed, Canchanged)
+                .ObservesProperty(() => MetricValue)
+                .ObservesProperty(() => imperialValue);
+        }
+
+        public DelegateCommand ChangeCommand { get; }
+
+
+        public void Changed() {
+            CurrentMetricUnit = MetricUnit.Units.First();
+            CurrnetImperialUnit = ImperialUnit.Units.First();
+
+            ImperialUnitToMetric = new DelegateCommand(
+                () => MetricValue =
+                   CurrentMetricUnit.FromImperialUnit(CurrnetImperialUnit, ImprialValue));
+
+            MetoricToImperialunit = new DelegateCommand(
+                () => ImprialValue =
                    CurrnetImperialUnit.FromMetricUnit(CurrentMetricUnit, MetricValue));
         }
 
-        
+        public void Canchanged() {
 
-
+        }
     }
 }
