@@ -1,0 +1,75 @@
+﻿<Window x:Class="CustomerApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CustomerApp" SizeToContent="Height"
+        mc:Ignorable="d"
+        Title="顧客管理アプリケーション" Height="800"  Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,10,0,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="名前" FontSize="40"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Height="52" Width="80" RenderTransformOrigin="0.569,0.02"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="NameText" Margin="23"/>
+
+            <TextBlock Grid.Row="1" Text="電話番号" FontSize="20"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.344,-0.288"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="CallNumberText" Margin="23"/>
+
+            <TextBlock Grid.Row="2" Text="住所" FontSize="40"
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="80" Margin="0,21,0,0"/>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="AddressText" Margin="23"/>
+
+            <Button Content="画像" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Height="78" Width="80"
+                    FontSize="20" Click="PhotoButton_Click" x:Name="PhotoButton"/>
+
+            <Button Content="保存" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="4" VerticalAlignment="Top"
+                    Grid.ColumnSpan="2" Height="42" Width="380" FontSize ="20" x:Name="SaveButton" Click="SaveButton_Click"/>
+
+            <Button Content="削除" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center"
+                Grid.ColumnSpan="2" Height="42" Width="380" FontSize ="20" x:Name="DeleteButton" Click="DeleteButton_Click"/>
+
+            <Button Content="更新" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.Row="6" VerticalAlignment="Top"
+                Grid.ColumnSpan="2" Height="42" Width="380" FontSize ="20" x:Name="UpDateButton" Click="UpDateButton_Click"/>
+
+            <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="7" VerticalAlignment="Center" Width="380" Grid.ColumnSpan="2" Height="52"
+                     FontSize="20" x:Name="SerchTextBox" TextChanged="SerchTextBox_TextChanged" />
+            <Grid Grid.Column="1" Grid.Row="7"/>
+
+        </Grid>
+
+        <ListView Grid.Column="1" x:Name="CustomerListView" Margin="5,5,5,5" SelectionChanged="CustomerListView_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontSize="20"/>
+                        <TextBlock Text="{Binding Phone}" FontSize="20" Foreground="Green"/>
+                        <TextBlock Text="{Binding Address}" FontSize="20" Foreground="Blue"/>
+                        <TextBlock Text="{Binding Picture}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Window>

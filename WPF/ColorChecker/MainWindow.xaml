@@ -15,7 +15,7 @@
 
         <Label x:Name="colorArea" Margin="10" Background="Black"/>
         
-        <Grid Grid.Column="1">
+        <Grid Grid.ColumnSpan="3" Margin="233,0,233,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="3*"/>

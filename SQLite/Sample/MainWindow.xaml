@@ -12,7 +12,7 @@
             <RowDefinition Height="744*"/>
         </Grid.RowDefinitions>
         <StackPanel Margin="10,10,10,10" Grid.RowSpan="2">
-            <TextBox x:Name="NameText"/>
+            <TextBox  x:Name="NameText"/>
             <TextBox x:Name="PhoneText"/>
             <Button Content="更新" x:Name="UpdateButton" Click="UpdateButton_Click"/>
             <Button Content="保存" x:Name="SaveButton" Click="SaveButton_Click"/>
