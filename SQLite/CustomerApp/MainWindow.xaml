@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomerApp" SizeToContent="Height"
         mc:Ignorable="d"
-        Title="顧客管理アプリケーション" Height="800"  Width="800">
+        Title="顧客管理アプリケーション" Height="800"  Width="800"
+        Background="LightBlue">
+    
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -29,7 +32,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="名前" FontSize="40"
-                       HorizontalAlignment="Center" VerticalAlignment="Center" Height="52" Width="80" RenderTransformOrigin="0.569,0.02"/>
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Height="52" Width="80" RenderTransformOrigin="0.569,0.02" Margin="0,23,0,0"/>
             <TextBox Grid.Row="0" Grid.Column="1" x:Name="NameText" Margin="23"/>
 
             <TextBlock Grid.Row="1" Text="電話番号" FontSize="20"
@@ -37,11 +40,14 @@
             <TextBox Grid.Row="1" Grid.Column="1" x:Name="CallNumberText" Margin="23"/>
 
             <TextBlock Grid.Row="2" Text="住所" FontSize="40"
-                       HorizontalAlignment="Center" VerticalAlignment="Top" Height="65" Width="80" Margin="0,21,0,0"/>
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Height="52" Width="80" Margin="0,19,0,0"/>
             <TextBox Grid.Row="2" Grid.Column="1" x:Name="AddressText" Margin="23"/>
 
-            <Button Content="画像" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Height="78" Width="80"
-                    FontSize="20" Click="PhotoButton_Click" x:Name="PhotoButton"/>
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,7,0,0">
+                <Button Content="画像" Height="78" Width="100" FontSize="40" Click="PhotoButton_Click" x:Name="PhotoButton"/>
+                <Image x:Name="ImageBox" Width="256" Height="86" Margin="20,0,0,0"/>
+            </StackPanel>
+
 
             <Button Content="保存" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="4" VerticalAlignment="Top"
                     Grid.ColumnSpan="2" Height="42" Width="380" FontSize ="20" x:Name="SaveButton" Click="SaveButton_Click"/>
@@ -58,15 +64,18 @@
 
         </Grid>
 
-        <ListView Grid.Column="1" x:Name="CustomerListView" Margin="5,5,5,5" SelectionChanged="CustomerListView_SelectionChanged">
+        <ListView Grid.Column="1" x:Name="CustomerListView" Margin="5,5,5,5" SelectionChanged="CustomerListView_SelectionChanged" Background="LightBlue">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Name}" FontSize="20"/>
-                        <TextBlock Text="{Binding Phone}" FontSize="20" Foreground="Green"/>
-                        <TextBlock Text="{Binding Address}" FontSize="20" Foreground="Blue"/>
-                        <TextBlock Text="{Binding Picture}" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                        <StackPanel Width="200">
+                            <TextBlock Text="{Binding Name}" FontSize="20"/>
+                            <TextBlock Text="{Binding Phone}" FontSize="20" Foreground="Green"/>
+                            <TextBlock Text="{Binding Address}" FontSize="20" Foreground="Blue"/>
+                        </StackPanel>
+                        <Image Source="{Binding PictureImage}" Width="100" Height="100" Margin="10,0,0,0"/>
                     </StackPanel>
+
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
