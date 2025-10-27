@@ -24,12 +24,14 @@ public partial class MainWindow : Window{
     {
         InitializeComponent();
         ReadDatabase();
+
         CustomerListView.ItemsSource = _customers;
     }
+    private string _lastFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 
     private void PhotoButton_Click(object sender, RoutedEventArgs e) {
         OpenFileDialog openFileDialog = new OpenFileDialog {
-            InitialDirectory = @"C:\Users\infosys\Desktop\画像集",
+            InitialDirectory = _lastFolder,
             Filter = "画像ファイル|*.jpg;*.jpeg;*.png;*.bmp;*.gif"
         };
 

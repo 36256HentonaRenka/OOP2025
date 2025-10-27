@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="顧客管理アプリケーション" Height="800"  Width="800"
         Background="LightBlue">
-    
-    
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -33,15 +33,18 @@
 
             <TextBlock Text="名前" FontSize="40"
                        HorizontalAlignment="Center" VerticalAlignment="Top" Height="52" Width="80" RenderTransformOrigin="0.569,0.02" Margin="0,23,0,0"/>
-            <TextBox Grid.Row="0" Grid.Column="1" x:Name="NameText" Margin="23"/>
+            <TextBox Grid.Row="0" Grid.Column="1" TextAlignment="Center" x:Name="NameText" Margin="23" FontSize="20"
+                     VerticalContentAlignment="Center"/>
 
             <TextBlock Grid.Row="1" Text="電話番号" FontSize="20"
                        HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.344,-0.288"/>
-            <TextBox Grid.Row="1" Grid.Column="1" x:Name="CallNumberText" Margin="23"/>
+            <TextBox Grid.Row="1" Grid.Column="1" TextAlignment="Center" FontSize="20" x:Name="CallNumberText" Margin="23"
+                     VerticalContentAlignment="Center"/>
 
             <TextBlock Grid.Row="2" Text="住所" FontSize="40"
                        HorizontalAlignment="Center" VerticalAlignment="Top" Height="52" Width="80" Margin="0,19,0,0"/>
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="AddressText" Margin="23"/>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="AddressText" Margin="23"  TextAlignment="Center" FontSize="20"
+                     VerticalContentAlignment="Center"/>
 
             <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,7,0,0">
                 <Button Content="画像" Height="78" Width="100" FontSize="40" Click="PhotoButton_Click" x:Name="PhotoButton"/>
@@ -49,18 +52,20 @@
             </StackPanel>
 
 
-            <Button Content="保存" HorizontalAlignment="Left" Margin="10,32,0,0" Grid.Row="4" VerticalAlignment="Top"
-                    Grid.ColumnSpan="2" Height="42" Width="380" FontSize ="20" x:Name="SaveButton" Click="SaveButton_Click"/>
+            <Button Content="保存" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" VerticalAlignment="Center"
+                    Grid.ColumnSpan="2" Height="76" Width="380" FontSize ="20" x:Name="SaveButton" Click="SaveButton_Click"/>
 
             <Button Content="削除" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center"
-                Grid.ColumnSpan="2" Height="42" Width="380" FontSize ="20" x:Name="DeleteButton" Click="DeleteButton_Click"/>
+                Grid.ColumnSpan="2" Height="75" Width="380" FontSize ="20" x:Name="DeleteButton" Click="DeleteButton_Click"/>
 
-            <Button Content="更新" HorizontalAlignment="Left" Margin="10,23,0,0" Grid.Row="6" VerticalAlignment="Top"
-                Grid.ColumnSpan="2" Height="42" Width="380" FontSize ="20" x:Name="UpDateButton" Click="UpDateButton_Click"/>
+            <Button Content="更新" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="6" VerticalAlignment="Center"
+                Grid.ColumnSpan="2" Height="76" Width="380" FontSize ="20" x:Name="UpDateButton" Click="UpDateButton_Click"/>
 
-            <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="7" VerticalAlignment="Center" Width="380" Grid.ColumnSpan="2" Height="52"
-                     FontSize="20" x:Name="SerchTextBox" TextChanged="SerchTextBox_TextChanged" />
-            <Grid Grid.Column="1" Grid.Row="7"/>
+            <TextBox HorizontalAlignment="Left" Grid.Row="7" VerticalAlignment="Top" Width="380" Height="59"  TextAlignment="Center" VerticalContentAlignment="Center" 
+                     FontSize="20" x:Name="SerchTextBox" TextChanged="SerchTextBox_TextChanged" Margin="10,26,0,0" Grid.ColumnSpan="2" />
+            <Grid Grid.Column="1" Grid.Row="7" Margin="23,213,-23,-213"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top" Height="52" Width="164"
+                       Text= " 名前検索" FontSize="20" Grid.ColumnSpan="2"/>
 
         </Grid>
 
