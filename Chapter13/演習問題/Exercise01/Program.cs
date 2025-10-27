@@ -25,6 +25,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3() {
+            var year1 = Library.Books.Count(b=> b.PublishedYear == 2020 );
             
         }
 
