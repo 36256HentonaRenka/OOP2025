@@ -1,4 +1,6 @@
 ﻿
+using System.Security.Cryptography.X509Certificates;
+
 namespace Exercise01 {
     internal class Program {
         static void Main(string[] args) {
@@ -25,12 +27,28 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_3() {
-            var year1 = Library.Books.Count(b=> b.PublishedYear == 2020 );
-            
+            var year = Library.Books
+                .GroupBy(b => b.PublishedYear)
+                .Select(group => new {
+                    year = group.Key,
+                    count = group.Count()
+                })
+                .OrderBy( g => g.year);
+            foreach(var book in year) {
+                Console.WriteLine($"{book.year} : {book.count}");
+            }
+
+
         }
 
         private static void Exercise1_4() {
-            
+            var item = Library.Books
+                .OrderByDescending(g => g.PublishedYear)
+                .ThenByDescending(g=> g.Price);
+            foreach (var books in item) {
+                Console.WriteLine($"{books.PublishedYear}年 {books.Price}円 {books.Title}");
+            }
+
         }
 
         private static void Exercise1_5() {
