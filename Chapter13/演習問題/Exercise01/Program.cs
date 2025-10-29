@@ -65,7 +65,19 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-            
+            var category = Library.Categories
+                .GroupJoin(Library.Books,
+                c => c.Id,
+                b => b.CategoryId,
+                (c, books) => new { Category = c.Name, Books = books }
+                )
+            .OrderBy( s => s.Category);
+            foreach (var item in category) {
+                Console.WriteLine($"# {item.Category}");
+                foreach(var book in item.Books) {
+                    Console.WriteLine($" {book.Title}");
+                }
+            }
         }
 
         private static void Exercise1_7() {
