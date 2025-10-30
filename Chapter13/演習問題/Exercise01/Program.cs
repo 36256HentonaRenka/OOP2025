@@ -65,7 +65,7 @@ namespace Exercise01 {
         }
 
         private static void Exercise1_6() {
-            var category = Library.Categories
+            /*var category = Library.Categories
                 .GroupJoin(Library.Books,
                 c => c.Id,
                 b => b.CategoryId,
@@ -77,15 +77,61 @@ namespace Exercise01 {
                 foreach(var book in item.Books) {
                     Console.WriteLine($" {book.Title}");
                 }
+            }*/
+
+            var groups = Library.Books
+                .Join(Library.Categories,
+                      b => b.CategoryId,
+                      s => s.Id,
+                      (b, s) => new {
+                          CategoryName = s.Name,
+                          b.Title
+                      })
+                .GroupBy(x => x.CategoryName)
+                .OrderBy(x => x.Key);
+            foreach (var group in groups) {
+                Console.WriteLine($"# {group.Key}");
+                foreach (var book in group) {
+                    Console.WriteLine($" {book.Title}");
+                }
             }
         }
 
         private static void Exercise1_7() {
-            
+            var category = Library.Categories
+                .Where(s => s.Name.Equals("Development"))
+                .Join(Library.Books,
+                c => c.Id,
+                b => b.CategoryId,
+                (c, b) => new {
+                    b.Title,
+                    b.PublishedYear
+                })
+                .GroupBy(x => x.PublishedYear)
+                .OrderBy(x => x.Key);
+            foreach (var item in category) {
+                Console.WriteLine($"#{item.Key}");
+                foreach (var book in item) {
+                    Console.WriteLine($" {book.Title}");
+                }
+            }
+                
         }
 
         private static void Exercise1_8() {
-            
+            var groups = Library.Categories
+                .GroupJoin(Library.Books,
+                c => c.Id,
+                b => b.CategoryId,
+                (c, book) => new {
+                    Category = c.Name,
+                    Count = book.Count()
+                })
+                .Where(x=> x.Count >= 4)
+                .Select(x=> x.Category);
+            foreach(var group in groups) {
+                Console.WriteLine(group);
+            }
         }
     }
 }
