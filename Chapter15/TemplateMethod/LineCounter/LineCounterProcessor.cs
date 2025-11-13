@@ -8,17 +8,22 @@ using TextFileProcessor;
 namespace LineCounter {
     internal class LineCounterProcessor : TextProcessor{
         private int _count = 0;
+        private string target = "";
 
-        protected override void Initialize(string fname) => _count = 0;
+        protected override void Initialize(string fname) {
+            _count = 0;
+            Console.Write("カウントしたい文字または単語を入力してください: ");
+            target = Console.ReadLine();
+        }
 
         protected override void Execute(string line) {
             foreach (var item in line.Split(' ')) {
-                if (item.Contains("public")) {
+                if (item.Contains(target)) {
                     _count++;
                 }
             }
         }
 
-        protected override void Terminate() => Console.WriteLine("public : ",_count);
+        protected override void Terminate() => Console.WriteLine($"{target}:{_count}");
     }
 }

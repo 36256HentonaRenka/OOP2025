@@ -11,6 +11,7 @@ namespace TextFileProcessor {
             self.Process(fileName);
         }
 
+
         private void Process(string fileName) {
             Initialize(fileName);
             var lines = File.ReadLines(fileName);
