@@ -12,7 +12,7 @@ namespace LineCounter {
 
         protected override void Initialize(string fname) {
             _count = 0;
-            Console.Write("カウントしたい文字または単語を入力してください: ");
+            Console.Write("カウントしたい文字を入力してください: ");
             target = Console.ReadLine();
         }
 
