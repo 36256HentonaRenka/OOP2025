@@ -11,8 +11,14 @@ namespace LineCounter {
 
         protected override void Initialize(string fname) => _count = 0;
 
-        protected override void Execute(string line) => _count++;
+        protected override void Execute(string line) {
+            foreach (var item in line.Split(' ')) {
+                if (item.Contains("public")) {
+                    _count++;
+                }
+            }
+        }
 
-        protected override void Terminate() => Console.WriteLine("[0]行",_count);
+        protected override void Terminate() => Console.WriteLine("public : ",_count);
     }
 }
