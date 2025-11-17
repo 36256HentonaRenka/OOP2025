@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TextFileProccerssorDI {
-    public class LineCounterService : ITextFileService {
+    internal class LineToHalfNumberService : ITextFileService {
         private int _count;
-
         public void Initialize(string fname) {
             _count = 0;
         }
 
         public void Execute(string line) {
-            
-                _count++;
+            _count++;
+            Console.WriteLine(line.ToUpper());
         }
 
         public void Terminate() {
-            Console.WriteLine($"{_count} 行");
+            
         }
     }
 }
+

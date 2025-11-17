@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace TextFileProccerssorDI {
-    public class LineCounterService : ITextFileService {
+    public class LineOutputService :ITextFileService {
         private int _count;
 
         public void Initialize(string fname) {
@@ -13,8 +13,11 @@ namespace TextFileProccerssorDI {
         }
 
         public void Execute(string line) {
-            
                 _count++;
+                if (_count <= 20) {
+                    Console.WriteLine(line);
+                }
+            
         }
 
         public void Terminate() {
