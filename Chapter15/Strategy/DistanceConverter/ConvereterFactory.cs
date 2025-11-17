@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DistanceConverter {
+    public static class ConvereterFactory {
+        private readonly static ConverterBase[] _converters = {
+            new MeterConverter(),
+            new FeetConverter(),
+            new YardConverter(),
+            new InchConverter(),
+            new MileConverter(),
+            new KmConverter()
+        };
+
+            public static ConverterBase? GetInstance(string name) =>
+                _converters.FirstOrDefault(x => x.IsMyUnit(name));
+    }
+    
+}
