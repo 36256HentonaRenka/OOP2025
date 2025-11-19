@@ -27,7 +27,7 @@ namespace TextFileProccerssorDI {
             );
             Console.WriteLine(result);*/
 
-            var s = Regex.Replace(line, "{０-９}", c => _dictonary[c.Value[0]].ToString());
+            var s = Regex.Replace(line, "[０-９]", c => _dictonary[c.Value[0]].ToString());
             Console.WriteLine(s);
 
 
