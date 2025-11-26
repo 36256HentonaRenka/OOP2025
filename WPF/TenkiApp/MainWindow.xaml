@@ -3,10 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="日本地図 天気アプリ" Height="800" Width="1000">
 
-    <Grid Margin="10">
+    <Grid Margin="10" x:Name="MainGrid">
         <!-- 背景画像 -->
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\infosys\Desktop\tenki1.jpg"
+            <ImageBrush ImageSource="C:/Users/infosys/Desktop/default.jpg"
                         Stretch="UniformToFill"/>
         </Grid.Background>
 
@@ -31,6 +31,7 @@
         <TextBlock Name="CoordText"
                    Grid.Row="1"
                    FontSize="16"
+                   Foreground ="Red"
                    Margin="10"
                    HorizontalAlignment="Center"
                    TextAlignment="Center"/>
@@ -40,7 +41,7 @@
                    Grid.Row="2"
                    FontSize="24"
                    Margin="10"
-                   Foreground="DarkBlue"
+                   Foreground="Yellow"
                    HorizontalAlignment="Center"
                    TextAlignment="Center"/>
 

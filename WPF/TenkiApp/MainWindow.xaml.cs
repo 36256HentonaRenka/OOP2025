@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
-using Newtonsoft.Json.Linq;
+using System.Windows.Media;
 
 namespace WeatherApp {
     public partial class MainWindow : Window {
@@ -39,6 +40,29 @@ namespace WeatherApp {
             var (lat, lon) = prefectureCenters[prefecture];
             await FetchWeather(lat, lon, prefecture);
         }
+
+        private void UpdateBackground(string weatherText) {
+            string imagePath = "C:/Users/infosys/Desktop/default.jpg"; // デフォルト背景
+
+            if (weatherText.Contains("晴れ"))
+                imagePath = "C:/Users/infosys/Desktop/sunny.jpeg";
+            else if (weatherText.Contains("曇り"))
+                imagePath = "C:/Users/infosys/Desktop/cloudy.jpg";
+            else if (weatherText.Contains("雨"))
+                imagePath = "C:/Users/infosys/Desktop/rain.jpg";
+            else if (weatherText.Contains("雪"))
+                imagePath = "C:/Users/infosys/Desktop/snow.jpg";
+            else if (weatherText.Contains("雷"))
+                imagePath = "C:/Users/infosys/Desktop/thunder.jpg";
+
+            // 背景を変更
+            var brush = new ImageBrush {
+                ImageSource = new System.Windows.Media.Imaging.BitmapImage(new Uri(imagePath, UriKind.Relative)),
+                Stretch = System.Windows.Media.Stretch.UniformToFill
+            };
+            this.MainGrid.Background = brush; // XAML側で Grid に x:Name="MainGrid" を付けておく
+        }
+
 
         private async System.Threading.Tasks.Task FetchWeather(double lat, double lon, string prefecture) {
             string url =
@@ -148,6 +172,15 @@ namespace WeatherApp {
                     TempRange = $"最低 {dailyMin[i]}℃ / 最高 {dailyMax[i]}℃"
                 });
             }
+
+            if (weatherData.Count > 0) {
+                string currentWeather = weatherData[0].Weather;
+                CurrentWeatherText.Text = $"現在の天気: {currentWeather}";
+
+                // 背景更新
+                UpdateBackground(currentWeather);
+            }
+
 
             WeeklyItems.ItemsSource = weeklyData;
         }
