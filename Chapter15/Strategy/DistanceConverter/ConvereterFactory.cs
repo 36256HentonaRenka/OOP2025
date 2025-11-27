@@ -15,8 +15,8 @@ namespace DistanceConverter {
             new KmConverter()
         };
 
-            public static ConverterBase? GetInstance(string name) =>
-                _converters.FirstOrDefault(x => x.IsMyUnit(name));
+        public static ConverterBase? GetInstance(string name) =>
+            _converters.FirstOrDefault(x => x.IsMyUnit(name));
     }
     
 }
